@@ -1,0 +1,141 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+/* -----------------------------------
+作品詳細ページ用css
+-------------------------------------*/
+
+/* 全体
+-------------------------------------*/
+#works{
+	padding-bottom: 100px;
+}
+
+/* ヘッダー
+-------------------------------------*/
+#works-head{
+	border-top: 5px solid #000;
+	padding: 60px 0 20px 0;
+}
+
+.works-head-in{
+	width: 1000px;
+	margin: 0 auto;
+	margin-bottom: 30px;
+	padding: 10px 0;
+	border-top: 1px dotted #aaa;
+	border-bottom: 1px dotted #aaa;
+	position: relative;
+}
+
+.works-head-in h1{
+	font-size: 18px; font-size: 1.8rem;
+	font-weight: bold;
+	font-size: 2rem;
+	font-weight: bold;
+	font-family: "Montserrat", sans-serif;;
+}
+
+.works-head-in p{
+	position: absolute;
+	right:20px;
+	top:-50px;
+}
+
+
+/* 全体の箱
+-------------------------------------*/
+#works-content{
+	width: 1000px;
+	margin:0 auto;
+	display: flex;
+	justify-content: space-between;
+}
+
+/* 左 - 作品画像
+-------------------------------------*/
+.w-left{
+	width: 500px;
+}
+.w-left p{
+	text-align: right;
+	font-weight: bold;
+	font-size: 1.6rem;
+}
+.w-left p img{
+	border: 1px solid #ccc;
+	margin-bottom: 2rem;
+}
+
+/* スライドビュー用(works02/index.html 用)
+----------------------------------------*/
+.slideshow div {  
+	width: 500px;  
+	height: 320px;  
+	overflow: hidden;  
+	position: relative;  
+}
+.aspect div{
+	height: 500px;
+}
+
+.slideshow div div {  
+	top: 0;  
+	left: 0;  
+	position: absolute;  
+}  
+
+.slideshow ul{
+	margin: 0;
+	padding: 30px 0;
+	overflow: hidden;
+}
+
+.slideshow ul li{
+	margin: 0;
+	padding: 0 25px 20px 0;
+	width: 150px;
+	float: left;	
+}
+
+.slideshow ul li img{
+	object-fit: cover;
+}
+
+/* 3の倍数のみpaddingの右0の設定にしています */
+.slideshow ul li:nth-child(3n){
+	padding: 0 0 20px 0;
+}
+
+.slideshow .active {  
+	filter:alpha(opacity=100)!important;  
+	-moz-opacity: 1!important;  
+	opacity: 1!important;  
+}  
+  
+/* 右 - 作品の解説
+-------------------------------------*/
+.w-right{
+	width: 450px;
+}
+
+.w-right dl{
+	padding-bottom: 30px;
+}
+
+.w-right dl dt{
+	padding: 5px 10px;
+	border-left: 5px solid #666;
+	font-size: 1.6rem;
+}
+
+.w-right dl dd{
+	margin: 5px 0 0 0;
+	padding: 10px;
+	border-top: 1px solid #ccc;
+}
+
+.bold{
+	font-weight: bold;
+}

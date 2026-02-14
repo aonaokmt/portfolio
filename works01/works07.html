@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>ポートフォリオ-作品詳細</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link rel="stylesheet" href="../common/css/reset.css">
+<link rel="stylesheet" href="../common/css/style.css">
+<link rel="stylesheet" href="../common/css/works.css">
+<script src="../common/js/smartRollover.js"></script>
+<script src="../common/js/smoothscroll.js"></script>
+</head>
+
+<body>
+<div id="wrapper">
+    <div id="works">
+        <div id="works-head">
+            <div class="works-head-in">
+                <h1>WORKS</h1>
+                <p><a href="#" onClick="if (/Chrome/i.test(navigator.userAgent)) { window.close(); } else { window.open('about:blank', '_self').close(); }"><img src="../common/img/close.gif" alt=""></a></p>
+            </div>
+        </div>
+
+        <div id="works-content">
+            <!-- 見出し -->
+            <!-- 左-作品画像 -->
+            <div class="w-left">
+                <p><img src="../common/img/work07-2.jpg" width="500" alt=""></p>
+            </div>
+
+            <!-- 右-作品解説 -->
+            <div class="w-right">
+                <!-- 項目1 -->
+                <dl>
+                    <dt>制作目的（ポスターイメージ）</dt>
+                    <dd>
+                        京都市の「ハロートレーニング」ポスターコンペ（8/20〆切）に応募するにあたり制作した作品。
+                        未経験の職種や新しい分野に挑戦することで広がる未来の可能性を、海の広がりや荒波を背景に表現した。
+                        未知の世界へ漕ぎ出す勇気を象徴し、変化を選ぶ一歩の大切さを伝えることを目的とした。
+                        <br>制作の過程では、自分自身もまた未経験からWeb業界に挑戦している最中であることを重ね合わせ、「挑戦すること自体が成長である」という実感を作品に込めた。
+                    </dd>
+                </dl>
+
+                <!-- 項目2 -->
+                <dl>
+                    <dt>ターゲット</dt>
+                    <dd>
+                        新たな職業や分野に挑戦しようとする人、また現状を変えたいと考える幅広い年齢層の求職者。
+                    </dd>
+                </dl>
+    
+                <!-- 項目4 -->
+                <dl>
+                    <dt>制作時間</dt>
+                    <dd>デザイン：約10日間</dd>
+                </dl>
+
+                <!-- 項目5 -->
+                <dl>
+                    <dt>使用したソフト</dt>
+                    <dd>illustrator</dd>
+                </dl>
+
+                <!-- 項目7 -->
+                <dl>
+                    <dt>工夫した点、制作に関して気付いた事など…</dt>
+                    <dd>
+                        虹色を用いることで「どんな色にもなれる」という一人ひとりの個性や強みの多彩さを表現した。
+                        また、構図を右上に向かって進む流れにすることで、現状維持ではなく、変化を選んだその一歩が、自分の価値や可能性を高めていくというメッセージを視覚的に示した。
+                        挑戦そのものが価値だと思うため、「未来を選ぶ勇気に、確かな学びを。」という想いを込めてデザインした。
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+
+	<!--フッタ　ここから--> 
+    <footer></footer>
+    <!--フッタ　ここまで-->
+</div>
+
+<!--jQuery CDN -->
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+<!--画像切替 -->
+<script type="text/javascript">
+$(function(){
+    var setId = '.slideshow';
+    var fadeTime = 1000;
+    var delayTime = 5000;
+
+    $(setId + ' div div').each(function(i){
+        $(this).attr('id','view' + (i + 1).toString());
+        $(setId + ' div div').css({zIndex:'98',opacity:'0'});
+        $(setId + ' div div:first').css({zIndex:'99'}).stop().animate({opacity:'1'},fadeTime);
+    });
+
+    $(setId + ' ul li').click(function(){
+        clearInterval(setTimer);
+
+        var connectCont = $(setId + ' ul li').index(this);
+        var showCont = connectCont+1;
+
+        $(setId + ' div div#view' + (showCont)).siblings().stop().animate({opacity:'0'},fadeTime,function(){$(this).css({zIndex:'98'})});
+        $(setId + ' div div#view' + (showCont)).stop().animate({opacity:'1'},fadeTime,function(){$(this).css({zIndex:'99'})});
+
+        $(this).addClass('active');
+        $(this).siblings().removeClass('active');
+
+        timer();
+
+    });
+
+    $(setId + ' ul li:not(.active)').hover(function(){
+        $(this).stop().animate({opacity:'1'},200);
+    },function(){
+        $(this).stop().animate({opacity:'0.5'},200);
+    });
+
+    $(setId + ' ul li').css({opacity:'0.5'});
+    $(setId + ' ul li:first').addClass('active');
+
+    timer();
+
+    function timer() {
+        setTimer = setInterval(function(){
+            $('li.active').each(function(){
+                var listLengh = $(setId + ' ul li').length;
+                var listIndex = $(setId + ' ul li').index(this);
+                var listCount = listIndex+1;
+
+                if(listLengh == listCount){
+                    $(setId + ' ul li:first').click()
+                } else {
+                    $(this).next('li').click();
+                };
+            });
+        },delayTime);
+    };
+});
+</script>
+</body>
+</html>

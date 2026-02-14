@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>ポートフォリオ-作品詳細</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link rel="stylesheet" href="../common/css/reset.css">
+<link rel="stylesheet" href="../common/css/style.css">
+<link rel="stylesheet" href="../common/css/works.css">
+<script src="../common/js/smartRollover.js"></script>
+<script src="../common/js/smoothscroll.js"></script>
+</head>
+
+<body>
+<div id="wrapper">
+    <div id="works">
+        <div id="works-head">
+            <div class="works-head-in">
+                <h1>WORKS</h1>
+                <p><a href="#" onClick="if (/Chrome/i.test(navigator.userAgent)) { window.close(); } else { window.open('about:blank', '_self').close(); }"><img src="../common/img/close.gif" alt=""></a></p>
+            </div>
+        </div>
+
+        <div id="works-content">
+            <!-- 見出し -->
+            <!-- 左-作品画像 -->
+            <div class="w-left">
+                <div class="slideshow aspect">
+                    <!-- 上の切り替わる画像　-->
+                    <div>
+                        <div><a href="#1"><img src="img/canva01.jpg" width="500" alt="画像1"></a></div>
+                        <div><a href="#2"><img src="img/canva02.jpg" width="500" alt="画像2"></a></div>
+                        <div><a href="#3"><img src="img/canva03.jpg" width="500" alt="画像3"></a></div>
+                        <div><a href="#4"><img src="img/canvaMenu.jpg" width="350" alt="画像4"></a></div>
+                    </div>
+
+                    <!-- 下のサムネイル画像　-->
+                    <ul>
+                        <li><a href="javascript:void(0);"><img src="img/canva01.jpg" width="150" height="150" alt=""></a></li>
+                        <li><a href="javascript:void(0);"><img src="img/canva02.jpg" width="150" height="150" alt=""></a></li>
+                        <li><a href="javascript:void(0);"><img src="img/canva03.jpg" width="150" height="150" alt=""></a></li>
+                        <li><a href="javascript:void(0);"><img src="img/canvaMenu.jpg" width="150" height="150" alt=""></a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 右-作品解説 -->
+            <div class="w-right">
+                <!-- 項目1 -->
+                <dl>
+                    <dt>制作目的（バナーイメージ）</dt>
+                    <dd>
+                        前職のコンサル会社勤務時に、売上支援を行っていた醸造メーカー様のSNS運用支援としてサムネイル画像を制作した。(自身で撮影した写真が含まれたサムネイルのみ掲載) 
+                        <br>また、その元データを活用して商品一覧表も作成し、展示会やポップアップストアでご活用いただいた。
+                        <br>クライアントは過去にSNS運用を行っていたが中断しており、既存アカウントを再活用して新規顧客への認知拡大を目的に投稿を再開。
+                        商品は全13種類あり、それぞれの魅力を伝えるために13種分のサムネイルを制作。
+                        ターゲットである30～40代の健康意識が高く、日常に「ちょっと良いもの」を取り入れたい層に訴求するため、華やかで目に留まるデザインを心がけた。
+                </dl>
+
+                <!-- 項目5 -->
+                <dl>
+                    <dt>使用したソフト</dt>
+                    <dd>canva</dd>
+                </dl>
+
+                <!-- 項目7 -->
+                <dl>
+                    <dt>工夫した点、制作に関して気付いた事など…</dt>
+                    <dd>
+                        13種類の商品を網羅するため、写真がなかった商品については原品サンプルをお借りし、自ら撮影からサムネイル制作までを行った。
+                        過去に投稿されていたアレンジレシピを題材に用い、投稿の雰囲気との齟齬が生まれないようにデザインの系統を合わせた点にも配慮。
+                        さらに、作成した写真を活用し、13種類のアレンジレシピを1枚にまとめた一覧表を制作し、ユーザーが一目でレシピを比較できるよう工夫した。
+                        視認性と統一感を重視しつつ、華やかで目に止まるデザインを意識して取り組んだ。
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+
+	<!--フッタ　ここから--> 
+    <footer></footer>
+    <!--フッタ　ここまで-->
+</div>
+
+<!--jQuery CDN -->
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+<!--画像切替 -->
+<script type="text/javascript">
+$(function(){
+    var setId = '.slideshow';
+    var fadeTime = 1000;
+    var delayTime = 5000;
+
+    $(setId + ' div div').each(function(i){
+        $(this).attr('id','view' + (i + 1).toString());
+        $(setId + ' div div').css({zIndex:'98',opacity:'0'});
+        $(setId + ' div div:first').css({zIndex:'99'}).stop().animate({opacity:'1'},fadeTime);
+    });
+
+    $(setId + ' ul li').click(function(){
+        clearInterval(setTimer);
+
+        var connectCont = $(setId + ' ul li').index(this);
+        var showCont = connectCont+1;
+
+        $(setId + ' div div#view' + (showCont)).siblings().stop().animate({opacity:'0'},fadeTime,function(){$(this).css({zIndex:'98'})});
+        $(setId + ' div div#view' + (showCont)).stop().animate({opacity:'1'},fadeTime,function(){$(this).css({zIndex:'99'})});
+
+        $(this).addClass('active');
+        $(this).siblings().removeClass('active');
+
+        timer();
+
+    });
+
+    $(setId + ' ul li:not(.active)').hover(function(){
+        $(this).stop().animate({opacity:'1'},200);
+    },function(){
+        $(this).stop().animate({opacity:'0.5'},200);
+    });
+
+    $(setId + ' ul li').css({opacity:'0.5'});
+    $(setId + ' ul li:first').addClass('active');
+
+    timer();
+
+    function timer() {
+        setTimer = setInterval(function(){
+            $('li.active').each(function(){
+                var listLengh = $(setId + ' ul li').length;
+                var listIndex = $(setId + ' ul li').index(this);
+                var listCount = listIndex+1;
+
+                if(listLengh == listCount){
+                    $(setId + ' ul li:first').click()
+                } else {
+                    $(this).next('li').click();
+                };
+            });
+        },delayTime);
+    };
+});
+</script>
+</body>
+</html>

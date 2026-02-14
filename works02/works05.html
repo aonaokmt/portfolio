@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>ポートフォリオ-作品詳細</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link rel="stylesheet" href="../common/css/reset.css">
+<link rel="stylesheet" href="../common/css/style.css">
+<link rel="stylesheet" href="../common/css/works.css">
+<script src="../common/js/smartRollover.js"></script>
+<script src="../common/js/smoothscroll.js"></script>
+</head>
+
+<body>
+<div id="wrapper">
+    <div id="works">
+        <div id="works-head">
+            <div class="works-head-in">
+                <h1>WORKS</h1>
+                <p><a href="#" onClick="if (/Chrome/i.test(navigator.userAgent)) { window.close(); } else { window.open('about:blank', '_self').close(); }"><img src="../common/img/close.gif" alt=""></a></p>
+            </div>
+        </div>
+
+        <div id="works-content">
+            <!-- 見出し -->
+            <!-- 左-作品画像 -->
+            <div class="w-left">
+                <div class="slideshow aspect">
+                    <!-- 上の切り替わる画像　-->
+                    <div>
+                        <div><a href="#1"><img src="img/banner01.jpg" width="500" alt="画像1"></a></div>
+                        <div><a href="#2"><img src="img/banner02.jpg" width="500" alt="画像2"></a></div>
+                        <div><a href="#3"><img src="img/banner03.jpg" width="500" alt="画像3"></a></div>
+                    </div>
+
+                    <!-- 下のサムネイル画像　-->
+                    <ul>
+                        <li><a href="javascript:void(0);"><img src="img/banner01.jpg" width="150" height="150" alt=""></a></li>
+                        <li><a href="javascript:void(0);"><img src="img/banner02.jpg" width="150" height="150" alt=""></a></li>
+                        <li><a href="javascript:void(0);"><img src="img/banner03.jpg" width="150" height="150" alt=""></a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 右-作品解説 -->
+            <div class="w-right">
+                <!-- 項目1 -->
+                <dl>
+                    <dt>制作目的（バナーイメージ）</dt>
+                    <dd>9月に実習先にて作成。実習先のお客様である写真スタジオ様からの依頼で、七五三の集客を目的としたSNS広告バナーを制作した。
+                        限られた広告枠の中で「一瞬で目を引き、思わずクリックしたくなるビジュアル」を実現することを意識。<br>
+                        特に、ターゲット層である祖父母世代が「自分の孫と重ねて見たくなる」ような写真を選定することで、広告としての効果を高めることを狙った。
+                    </dd>
+                </dl>
+
+                <!-- 項目2 -->
+                <dl>
+                    <dt>ターゲット</dt>
+                    <dd>孫をもつ50~60代の祖父母</dd>
+                </dl>
+    
+                <!-- 項目4 -->
+                <dl>
+                    <dt>制作時間</dt>
+                    <dd>約2時間<br>
+                    </dd>
+                </dl>
+
+                <!-- 項目5 -->
+                <dl>
+                    <dt>使用したソフト</dt>
+                    <dd>Photoshop</dd>
+                </dl>
+
+                <!-- 項目7 -->
+                <dl>
+                    <dt>工夫した点、制作に関して気付いた事など…</dt>
+                    <dd>
+                        与えられた写真素材の中から最適な一枚を選び出すことの重要性を実感した。
+                        被写体をどのサイズで扱うか、背景との組み合わせによってバナーとしてどれだけ目立つか、といった視点で写真を選ぶことにより、完成物の訴求力が大きく変わることを学んだ。
+                        <br>また、テキストが写真に干渉せず自然に見えるように配置を工夫し、必要に応じてレイヤー調整を行うことで、写真そのものの魅力を引き立てつつ情報が伝わるデザインに仕上げた。
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+
+	<!--フッタ　ここから--> 
+    <footer></footer>
+    <!--フッタ　ここまで-->
+</div>
+
+<!--jQuery CDN -->
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+<!--画像切替 -->
+<script type="text/javascript">
+$(function(){
+    var setId = '.slideshow';
+    var fadeTime = 1000;
+    var delayTime = 5000;
+
+    $(setId + ' div div').each(function(i){
+        $(this).attr('id','view' + (i + 1).toString());
+        $(setId + ' div div').css({zIndex:'98',opacity:'0'});
+        $(setId + ' div div:first').css({zIndex:'99'}).stop().animate({opacity:'1'},fadeTime);
+    });
+
+    $(setId + ' ul li').click(function(){
+        clearInterval(setTimer);
+
+        var connectCont = $(setId + ' ul li').index(this);
+        var showCont = connectCont+1;
+
+        $(setId + ' div div#view' + (showCont)).siblings().stop().animate({opacity:'0'},fadeTime,function(){$(this).css({zIndex:'98'})});
+        $(setId + ' div div#view' + (showCont)).stop().animate({opacity:'1'},fadeTime,function(){$(this).css({zIndex:'99'})});
+
+        $(this).addClass('active');
+        $(this).siblings().removeClass('active');
+
+        timer();
+
+    });
+
+    $(setId + ' ul li:not(.active)').hover(function(){
+        $(this).stop().animate({opacity:'1'},200);
+    },function(){
+        $(this).stop().animate({opacity:'0.5'},200);
+    });
+
+    $(setId + ' ul li').css({opacity:'0.5'});
+    $(setId + ' ul li:first').addClass('active');
+
+    timer();
+
+    function timer() {
+        setTimer = setInterval(function(){
+            $('li.active').each(function(){
+                var listLengh = $(setId + ' ul li').length;
+                var listIndex = $(setId + ' ul li').index(this);
+                var listCount = listIndex+1;
+
+                if(listLengh == listCount){
+                    $(setId + ' ul li:first').click()
+                } else {
+                    $(this).next('li').click();
+                };
+            });
+        },delayTime);
+    };
+});
+</script>
+</body>
+</html>

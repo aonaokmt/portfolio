@@ -1,0 +1,568 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Klee+One&family=Stick&display=swap');
+
+
+/* -----------------------------------
+共通
+-------------------------------------*/
+*{
+	box-sizing: border-box;
+}
+
+html { 
+	font-size: 62.5%; 
+}
+
+body {
+	color:#333;
+	line-height: 1.8;
+	font-size: 14px; font-size: 1.4rem;/* =14px */
+	font-family:"ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  vertical-align:bottom;
+  border:none;
+}
+
+
+/*リンク*/
+a{
+	color:#333;
+	text-decoration:none;
+}
+
+a:hover{color:#333;}
+
+/* -----------------------------------
+全体
+-------------------------------------*/
+#wrapper{
+	overflow:hidden;
+}
+
+.container{
+	max-width:1100px;
+	margin: 0 auto;
+	padding: 0 1rem;
+}
+section{
+	padding: 5rem 0;
+}
+
+/* -----------------------------------
+ヘッダー
+-------------------------------------*/
+header{
+	background-color: rgba(115, 162, 192, 0.3);
+}
+.head-in{
+	max-width:1100px;
+	margin: 0 auto;
+	padding-bottom: 10px;
+	display:flex;
+	justify-content: space-between;
+	z-index: 10;
+}
+.head-in h1{
+	width:180px; 
+	padding: 5px;
+	margin: 0 auto;
+}
+
+header nav{
+	display: none;
+}
+.head-in nav ul{
+	width: 650px;
+	padding:20px 0 0 0;
+	display:flex;
+	position: relative;
+	z-index: 10;
+}
+.head-in nav ul li{
+	width:25%;
+	text-align: center;
+}
+.head-in nav ul li a{
+	padding: 5px 0;
+}
+
+/* ナビメニューにマウスオーバー(a:hover)したらメニューの下に線が入る　*/
+.head-in nav ul li a:hover{
+	border-bottom: 3px solid #cae8fb;
+}
+
+/* -----------------------------------
+メイン
+-------------------------------------*/
+.mainContainer{
+	background-color: rgba(115, 162, 192, 0.3);
+}
+.mainSec{
+	position: relative;
+	max-width: 1100px;
+	height: 430px;
+	margin: 0 auto 60px;
+	overflow: visible;
+}
+.mainSec p:nth-child(1) {
+	position: static;
+	max-width: 600px;
+	margin: 0 auto;
+	top: -300px;
+}
+
+.mainSec p:nth-child(2) {
+	position: absolute;
+	bottom: 0;
+	left: -100px;
+	width: 200px;
+}
+
+/* h2---------------- */
+.mainH2{
+	position: absolute;
+	bottom: 5%;
+	right: 10%;
+	font-family: "Montserrat", sans-serif;
+	font-weight: 500;
+	font-size: 4.2rem;
+	line-height: 1.2;
+	letter-spacing: 1.8;
+	color: #333;
+}
+.mainH2 span{
+	color: #73A2C0;
+}
+.mainH2 br{
+	display: block;
+}
+
+.mainSec > div {
+	position: absolute;
+	bottom: 23%;
+	right: 0;
+	border-bottom: none ;
+	width: 650px;
+}
+.mainSec p.text {
+	position: absolute;
+	bottom: 15%;
+	right: 490px;
+	font-family: "Montserrat", sans-serif;
+	font-size: 1.8rem;
+	font-weight: bold;
+	line-height: 1.2;
+	letter-spacing: 1.5;
+}
+
+/* -----------------------------------
+共通:h2見出し
+-------------------------------------*/
+.noto{
+	margin-bottom: 30px;
+	padding-bottom: 5px;
+	border-bottom: 1px dotted #aaa;
+	font-size: 2rem;
+	font-weight: bold;
+	font-family: "Montserrat", sans-serif;
+}
+.noto span{
+	color: #73A2C0;
+}
+
+/* -----------------------------------
+greeting
+-------------------------------------*/
+.bubble-background p{
+	margin-bottom: 15px;
+	text-align: center;
+	font-size: 1.4rem;
+	font-family: "Stick", sans-serif;
+}
+.bubble-background p span{
+	font-size: 2.8rem;
+	font-weight: 500;
+	color: rgb(212, 112, 41);
+}
+.bubble-background p span.sea{
+	color: #73A2C0;
+}
+
+/* 泡 */
+.bubble-background {
+  position: relative;
+  background-color: #fff;
+  height: 340px;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* 泡の見た目 */
+.bubble {
+  position: absolute;
+  bottom: -50px;
+  background-color: transparent;
+  border-radius: 50%;
+  pointer-events: none;
+  box-shadow: inset 0 0 10px rgba(71, 153, 204, 0.3);
+  animation: bubble 9s linear infinite;
+}
+
+/* 泡の一番明るい部分を疑似要素で表現 */
+.bubble::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform: scale(0.25) translate(-70%, -70%);
+  background: radial-gradient(rgba(255, 255, 255, 0.5), transparent);
+  border-radius: 50%;
+}
+
+/* 泡が上に浮かび上がっていくアニメーション */
+@keyframes bubble {
+  0% {
+    transform: translatY(0);
+    opacity: 1;
+  }
+  99% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100vh);
+    opacity: 0;
+  }
+}
+
+
+/* -----------------------------------
+SKILL
+-------------------------------------*/
+#skill{
+	background-color: rgba(194, 215, 229, 0.3);
+}
+
+#skill > div{
+	max-width:1100px;
+	margin: 0 auto;
+	padding: 0 1rem;
+}
+
+.skill-in{
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.skill-in ol{
+	width: 47%;
+	margin: 0 3% 0 0;
+	padding: 0 0 30px 0;
+}
+
+.skill-in ol:nth-child(2n){
+	margin: 0;
+}
+
+.skill-in ol li{
+	margin: 0;
+	padding: 5px 0;
+	text-align: center;
+}
+
+.skill-in ol li:last-child{
+	text-align: left;
+}
+
+.skill-in ol li img{
+	width: 60px;
+}
+
+/* -----------------------------------
+WORKS
+-------------------------------------*/
+.works ul{
+	margin: 0;
+	display: flex;
+	flex-wrap: wrap;
+}
+.works ul li{
+	width: 47%;
+	margin: 0 6% 0 0;
+	padding:0 0 30px 0;
+	overflow: hidden;
+}
+
+.works ul li:nth-child(2n){
+	margin: 0;
+}
+
+.works ul li a img{
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.works ul:last-of-type{
+	padding: 0;
+}
+
+.works ul li a:hover img{
+	transform: scale(1.15);
+	transition: all 0.5s;
+}
+
+/* -----------------------------------
+ABOUT
+-------------------------------------*/
+.storyBox{
+	display: flex;
+	flex-direction: column;
+}
+.storyBox > div{
+	width: 100%;
+}
+.storyBox div img{
+	width: 100%;
+}
+.storyBox div:last-child{
+	margin: 2rem 0;
+}
+.storyBox dl{
+	margin: 1rem 0 1rem 2rem;
+	position: relative;
+}
+.storyBox dl::before{
+	content: "";
+	display: block;
+	width: 0;
+	height: 0;
+	border: .8rem transparent solid;
+	border-left: 1rem #aaa solid;
+	position: absolute;
+	top: .4rem;
+	left: -2rem;
+}
+.storyBox dl dt{
+	color: #73A2C0;
+	font-weight: bold;
+}
+
+/* TOPIX ここから */
+.topixSec{
+	margin-top: 10px;
+	max-width: 1100px;
+}
+
+.topixSec > p{
+	color: #73A2C0;
+	font-family: "Montserrat", sans-serif;
+	font-weight: bold;
+	font-size: 1.8rem;
+}
+.topixSec > p img{
+	width: 40px;
+}
+
+.topixSec article.slide {
+	background-color: rgba(194, 215, 229, 0.3);
+	width: 600px;
+	margin: 20px 0;
+	border-left: 5rem solid #73A2C0;
+}
+.topixSec article div{
+	padding: .8rem;
+}
+.topixSec article h3{
+	font-size: 1.8rem;
+	font-weight: bold;
+	color: rgb(212, 112, 41);
+}
+.topixSec article h3 span{
+	font-size: 1.4rem;
+}
+.topixSec article div dl {
+	padding: 1rem 0 .5rem;
+}
+.topixSec article div dl dt{
+	background-color: #73A2C0;
+	border-radius: 20px;
+	width: 60px;
+	height: 20px;
+	color: #fff;
+	font-size: 1.2rem;
+	text-align: center;
+	margin-bottom: .3rem;
+}
+.topixSec article div dl dt dd li{
+	position: relative;
+}
+
+/* スライド */
+.slide {
+  transform: scale(.8);
+  transition: transform .3s;
+}
+.slide.slick-center {
+  transform: scale(1);
+}
+
+/* -----------------------------------
+CONTACT
+-------------------------------------*/
+#contact p img{
+	padding: 0 5px 3px 0;
+}
+#contact p:nth-child(2){
+	display: flex;
+}
+
+/* -----------------------------------
+フッター
+-------------------------------------*/
+footer{
+	padding:20px 0;
+	background-color: #73A2C0;
+}
+
+footer nav{
+	max-width:1100px;
+	margin:0 auto;
+}
+
+footer nav ul{
+	margin:0;
+	padding:0;
+	text-align: center;
+}
+
+footer nav ul li{
+	margin:0;
+	padding:0 15px;
+	border-left:1px solid #fff;	
+	display: inline;
+}
+
+footer nav ul li:last-child{
+	border-right:1px solid #fff;	
+}
+
+footer nav ul li a{color: #fff;}
+footer nav ul li a:hover{color: #666;}
+
+
+
+
+
+/* -------------------------------
+タブレット以上　750
+--------------------------------- */
+@media screen and (min-width: 750px) {
+
+	/* header -------------------- */
+	.head-in h1{
+	margin: 0;
+}
+	header nav{
+	display: block;
+}
+
+
+	/* main ----------------------- */
+	.mainSec{
+	margin: 0 auto 60px;
+	padding: 0;
+}
+
+	.mainSec p:nth-child(1) {
+	position: absolute;
+	max-width: 100%;
+	top: -330px;
+	right: -250px;
+	width: 100%;
+	}
+	.mainSec p:nth-child(1) img{
+	width: 86.5%;
+	}
+	.mainSec p:nth-child(2) {
+	bottom: -60px;
+	left: -190px;
+	width: 600px;
+	}
+	.mainSec p:nth-child(2) img{
+	width: 110%;
+	}
+	/* h2 750 --------- */
+	.mainH2{
+	bottom: 20%;
+	right: 7%;
+	font-size: 6.0rem;
+	}
+	.mainH2 br{
+	display: none;
+	}
+	.mainSec > div {
+	border-bottom: 1.5px solid #555 ;
+	}
+
+
+	/* greeting ------------------- */
+	.bubble-background p{
+	font-size: 1.8rem;
+	}
+
+
+
+	/* about----------------------- */
+	.storyBox{
+	flex-direction: row;
+	}
+	.storyBox div:first-child{
+	width: 30%;
+	}
+	.storyBox div:last-child{
+	width: 70%;
+	}
+	.storyBox dl{
+	margin: 0 0 1rem 5rem;
+	}
+
+
+	/* about topix---------------------- */
+	.topixSec article h3{
+	font-size: 2.0rem;
+	}
+
+
+	/* skill---------------------- */
+
+	.skill-in ol:nth-child(2n){
+	margin: 0 11.8% 0 0;
+	}
+	.skill-in ol{
+	width: 25.45%;
+	margin: 0 11.8% 0 0;
+	}
+	.skill-in ol:nth-child(3n){
+	margin: 0;
+	}
+
+
+ /* works--------------------- */
+  .works ul li{
+	width: 27.27%;
+	margin: 0 9% 0 0;
+	}
+	.works ul li:nth-child(2n){
+	margin: 0 9% 0 0;
+	}
+	.works ul li:nth-child(3n){
+	margin: 0;
+	}
+
+
+}

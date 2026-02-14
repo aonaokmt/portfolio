@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>ポートフォリオ-作品詳細</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link rel="stylesheet" href="../common/css/reset.css">
+<link rel="stylesheet" href="../common/css/style.css">
+<link rel="stylesheet" href="../common/css/works.css">
+<script src="../common/js/smartRollover.js"></script>
+<script src="../common/js/smoothscroll.js"></script>
+</head>
+
+<body>
+<div id="wrapper">
+    <div id="works">
+        <div id="works-head">
+            <div class="works-head-in">
+                <h1>WORKS</h1>
+                <p><a href="#" onClick="if (/Chrome/i.test(navigator.userAgent)) { window.close(); } else { window.open('about:blank', '_self').close(); }"><img src="../common/img/close.gif" alt=""></a></p>
+            </div>
+        </div>
+
+        <div id="works-content">
+            <!-- 見出し -->
+            <!-- 左-作品画像 -->
+            <div class="w-left">
+                <div class="slideshow aspect">
+                    <!-- 上の切り替わる画像　-->
+                    <div>
+                        <div><a href="#1"><img src="../common/img/work06.jpg" width="500" alt="画像1"></a></div>
+                        <div><a href="#2"><img src="img/school_banner.jpg" width="500" alt="画像2"></a></div>
+                    </div>
+
+                    <!-- 下のサムネイル画像　-->
+                    <ul>
+                        <li><a href="javascript:void(0);"><img src="../common/img/work06.jpg" width="150" height="150" alt=""></a></li>
+                        <li><a href="javascript:void(0);"><img src="img/school_banner.jpg" width="150" height="150" alt=""></a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 右-作品解説 -->
+            <div class="w-right">
+                <!-- 項目1 -->
+                <dl>
+                    <dt>制作目的（バナーイメージ）</dt>
+                    <dd>
+                        ７月の授業にて作成した日焼け止めバナー。<br>
+                        模写（２枚名のバナー）を通じてツールの使い方を理解したうえで、ターゲットを明確に設定し、実際の広告利用を意識したデザイン制作を行った。
+                        男性が日常的に使いやすく、かつ商品に目が留まるようなシンプルで力強いバナーを目指した。
+                    </dd>
+                </dl>
+
+                <!-- 項目2 -->
+                <dl>
+                    <dt>ターゲット</dt>
+                    <dd>仕事で外回りが多いため日焼けを気にする30～40代男性</dd>
+                </dl>
+    
+                <!-- 項目4 -->
+                <dl>
+                    <dt>制作時間</dt>
+                    <dd>約2時間<br>
+                    </dd>
+                </dl>
+
+                <!-- 項目5 -->
+                <dl>
+                    <dt>使用したソフト</dt>
+                    <dd>illustrator /Photoshop</dd>
+                </dl>
+
+                <!-- 項目7 -->
+                <dl>
+                    <dt>工夫した点、制作に関して気付いた事など…</dt>
+                    <dd>
+                        男性向けであることから「男らしさ」を意識し、日焼け止め本体を大きく配置して主役として際立たせた。
+                        また、夏を想起させる砂浜と太陽の光を背景に取り入れ、直感的に日焼け止めの必然性を伝える工夫を施した。
+                        さらに、手間をかけたくない男性心理を踏まえ、「朝1本で1日OK」というコピーを配置し、短時間で魅力が伝わるようにした。
+                        <br>初めてのバナー制作であったが、ターゲット目線で商品価値を引き出すことを意識して取り組んだ。
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+
+	<!--フッタ　ここから--> 
+    <footer></footer>
+    <!--フッタ　ここまで-->
+</div>
+
+<!--jQuery CDN -->
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+<!--画像切替 -->
+<script type="text/javascript">
+$(function(){
+    var setId = '.slideshow';
+    var fadeTime = 1000;
+    var delayTime = 5000;
+
+    $(setId + ' div div').each(function(i){
+        $(this).attr('id','view' + (i + 1).toString());
+        $(setId + ' div div').css({zIndex:'98',opacity:'0'});
+        $(setId + ' div div:first').css({zIndex:'99'}).stop().animate({opacity:'1'},fadeTime);
+    });
+
+    $(setId + ' ul li').click(function(){
+        clearInterval(setTimer);
+
+        var connectCont = $(setId + ' ul li').index(this);
+        var showCont = connectCont+1;
+
+        $(setId + ' div div#view' + (showCont)).siblings().stop().animate({opacity:'0'},fadeTime,function(){$(this).css({zIndex:'98'})});
+        $(setId + ' div div#view' + (showCont)).stop().animate({opacity:'1'},fadeTime,function(){$(this).css({zIndex:'99'})});
+
+        $(this).addClass('active');
+        $(this).siblings().removeClass('active');
+
+        timer();
+
+    });
+
+    $(setId + ' ul li:not(.active)').hover(function(){
+        $(this).stop().animate({opacity:'1'},200);
+    },function(){
+        $(this).stop().animate({opacity:'0.5'},200);
+    });
+
+    $(setId + ' ul li').css({opacity:'0.5'});
+    $(setId + ' ul li:first').addClass('active');
+
+    timer();
+
+    function timer() {
+        setTimer = setInterval(function(){
+            $('li.active').each(function(){
+                var listLengh = $(setId + ' ul li').length;
+                var listIndex = $(setId + ' ul li').index(this);
+                var listCount = listIndex+1;
+
+                if(listLengh == listCount){
+                    $(setId + ' ul li:first').click()
+                } else {
+                    $(this).next('li').click();
+                };
+            });
+        },delayTime);
+    };
+});
+</script>
+</body>
+</html>

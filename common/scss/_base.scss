@@ -1,0 +1,69 @@
+@use 'var' as *;
+@use 'mixin' as *;
+
+/* -----------------------------------
+共通
+-------------------------------------*/
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  color: map-get($colors, text);
+  line-height: 1.8;
+  font-size: 14px;
+  font-size: 1.4rem; /* =14px */
+  font-family: $font-family-base;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: bottom;
+  border: none;
+}
+
+/* リンク */
+a {
+  color: map-get($colors, text);
+  text-decoration: none;
+  &:hover {
+    color: map-get($colors, text);
+  }
+}
+
+/* -----------------------------------
+全体
+-------------------------------------*/
+#wrapper {
+  overflow: hidden;
+}
+
+.container {
+  max-width: $max-width-lower;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+section {
+  padding: 5rem 0;
+}
+
+/* -----------------------------------
+共通:h2見出し
+-------------------------------------*/
+.noto{
+	margin-bottom: 30px;
+	padding-bottom: 5px;
+	border-bottom: 1px dotted #aaa;
+	font-size: 2rem;
+	font-weight: bold;
+	font-family: "Montserrat", sans-serif;
+  span{
+    color: map-get($colors, main);
+  }
+}

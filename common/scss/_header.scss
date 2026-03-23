@@ -1,0 +1,46 @@
+@use 'var' as *;
+@use 'mixin' as *;
+
+header {
+  background-color: rgba(map-get($colors, main), 0.3);
+}
+
+.head-in {
+  max-width: $max-width-lower;
+  margin: 0 auto;
+  padding-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  z-index: 10;
+  h1 {
+    width: 180px;
+    padding: 5px;
+    margin: 0 auto;
+    @include mq-up('sm') {
+      margin: 0;
+    }
+  }
+  nav {
+    display: none;
+    @include mq-up('sm') {
+      display: block;
+    }
+    ul {
+      width: 650px;
+      padding: 20px 0 0 0;
+      display: flex;
+      position: relative;
+      z-index: 10;
+      li {
+        width: 25%;
+        text-align: center;
+        a {
+          padding: 5px 0;
+          &:hover {
+            border-bottom: 3px solid #cae8fb;
+          }
+        }
+      }
+    }
+  }
+}

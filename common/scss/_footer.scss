@@ -1,0 +1,31 @@
+@use 'var' as *;
+@use 'mixin' as *;
+
+footer {
+  padding: 20px 0;
+  background-color: map-get($colors, main);
+  nav {
+    max-width: $max-width-lower;
+    margin: 0 auto;
+    ul {
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      li {
+        margin: 0;
+        padding: 0 15px;
+        border-left: 1px solid map-get($colors, white);
+        display: inline;
+        &:last-child {
+          border-right: 1px solid map-get($colors, white);
+        }
+        a {
+          color: map-get($colors, white);
+          &:hover {
+            color: map-get($colors, gray01);
+          }
+        }
+      }
+    }
+  }
+}

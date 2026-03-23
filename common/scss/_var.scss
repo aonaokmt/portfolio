@@ -1,0 +1,60 @@
+// ===========================================
+// functions 関数
+// ===========================================
+
+/* Only output numerical values
+/* 数値のみ出力する
+====================================== */
+@function strip-unit($number) {
+  @if type-of($number) == 'number' and not unitless($number) {
+    @return math.div($number, $number * 0 + 1);
+  }
+  @return $number;
+}
+
+// ========================================
+// variables 変数一覧
+// ========================================
+/* font $size
+====================================== */
+$font-size-default: 16px;
+
+/* font family
+====================================== */
+$font-family-base: 'Noto Sans JP', sans-serif;
+$font-family-opensans: "Open Sans", sans-serif;
+$font-family-icon: "Font Awesome 5 Free";
+
+/* Break point ブレイクポイント
+====================================== */
+// min-width
+$breakpoint-up: (
+  's': 640px,
+  'sm': 750px,
+  'm': 960px,
+  'l': 1200px,
+) !default;
+
+// max-width → minから1px減らす
+$breakpoint-down: () !default;
+@each $tag, $size in $breakpoint-up {
+  $breakpoint-down: map-merge($breakpoint-down, (#{$tag}: $size - 1));
+}
+
+
+/* max site width コンテンツ最大幅
+====================================== */
+$max-width-s: 375px;
+$max-width-m: 1440px;
+$max-width-l: 1620px;
+$max-width-lower: 960px;
+
+/* colors 色管理
+====================================== */
+$colors: (
+  text: #333,
+  main: #73A2C0,
+  accent: #d47029,
+  white: #fff,
+  gray01: #666,
+);
